@@ -46,6 +46,11 @@
                     <img id="linea-unidades" src="imagenes/Numeros/0.png" alt="unidades">
                 </div>
             </div>
+            <div class="estadisticas bloque3">
+                <h1>PALABRA SECRETA</h1>
+                <P id="emocion"></P>
+                <div id="palabraSecreta"></div>
+            </div>
         </aside>
     </section>
     <footer>
@@ -108,7 +113,10 @@
 
             if (tiempoPartida <= 0) {
             clearInterval(intervaloPartida);
-            alert("¡Se ha acabado el tiempo!", "La palabra secreta era: ", palabraSecreta);
+            alert("¡Se ha acabado el tiempo!");
+            mocion = document.getElementById("emocion").innerText = "Lo Sentimos!!!"
+            palabraSecretaId = document.getElementById("palabraSecreta").innerText = palabraSecreta
+
             // Deshabilitar clics en el teclado
             document.querySelectorAll('#container-teclado img').forEach(img => img.onclick = null);
             }
@@ -122,7 +130,10 @@
 
             if (tiempoLinea <= 0) {
             clearInterval(intervaloLinea);
-            alert("¡Se ha acabado el tiempo!", "La parabra secreta era: ", palabraSecreta);
+            alert("¡Se ha acabado el tiempo!");
+            emocion = document.getElementById("emocion").innerText = "Lo Sentimos!!!"
+            palabraSecretaId = document.getElementById("palabraSecreta").innerText = palabraSecreta
+
             // Deshabilitar clics en el teclado
             document.querySelectorAll('#container-teclado img').forEach(img => img.onclick = null);
             }
@@ -323,6 +334,5 @@
     }
 
     </script>
-    <!-- sincronizaciones -->
 </body>
 </html>

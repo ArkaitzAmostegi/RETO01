@@ -55,44 +55,18 @@ body {
   min-height: 100vh; /* que ocupe toda la altura de la pantalla */
   margin: 0;
 }
+/* Contenedor principal para main y aside */
+section {
+  display: flex;
+  flex: 1; /* ocupa el espacio restante bajo header y nav */
+  align-items: stretch; /*Para que el aside coja todo el vertical */
+  justify-content: center;
+}
 
 main,
 aside {
   padding: 20px;
   box-sizing: border-box;
-}
-aside{
-  display: flex;
-  flex-direction: column;
-}
-aside .estadisticas .tiempo{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-aside h1{
-  text-align: center;
-}
-aside img{
-  width: 150px;
-}
-/* Contenedor principal para main y aside */
-section {
-  display: flex;
-  flex: 1; /* ocupa el espacio restante bajo header y nav */
-  align-items: center;
-  justify-content: center;
-}
-
-/* proporciones */
-main {
-  flex: 2; /* 2 partes */
-  background-color: #f6e7c5;
-}
-
-aside {
-  flex: 1; /* 1 parte */
-  background-color: #d9cbb8;
 }
 main .container {
   display: flex;
@@ -110,7 +84,6 @@ main .container {
   padding: 10px;
   box-sizing: border-box;
 }
-
 
 #container-teclado {
   display: grid;
@@ -144,4 +117,31 @@ main .container {
   display: block;
   cursor: pointer;
 }
+
+/* proporciones */
+main {
+  flex: 2; /* 2 partes */
+  background-color: #f6e7c5;
+}
+
+aside {
+  flex: 1; /* 1 parte */
+  background-color: #fcba5d;
+}
+aside{
+  display: flex;
+  flex-direction: column;
+}
+aside .estadisticas .tiempo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+aside h1{
+  text-align: center;
+}
+aside img{
+  width: 150px;
+}
+
 
