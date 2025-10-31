@@ -1,3 +1,8 @@
+
+/* -----------
+      LINGO
+------------- */
+
 header {
     display: flex;
     flex-direction: row;
@@ -148,3 +153,13 @@ aside img{
   font-size: 2rem;
 }
 
+/* ----------
+      INDEX
+-------------- */
+
+body.index{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+}
