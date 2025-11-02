@@ -96,7 +96,6 @@
                 break;         // no hace falta seguir mirando
             }
         }
-
         return lleno;
     }
 
@@ -149,7 +148,7 @@
 
 
     //PARA COMENZAR EL JUEGO
-    let comenzarPartida = false;
+    let comenzarPartida = false; //Bool que usaré para que no se puedan presionar teclas antes de comenzar el juego en presionaTecla(elemento)
     document.querySelector(".jugar").addEventListener("click", empezarPartida)
     function empezarPartida(){
         //LLamamos a la función para que traiga una palabra secreta
@@ -172,7 +171,7 @@
             //Introduzco en el array palabra cada letra según la posición del abecedario
             letras.push(abecedario[letra]);
 
-            //Mensajes de depuración
+            //DEPURACIÓN
             console.log('ID tecla:', letra);
             console.log('SRC tecla:', elemento.src);
             console.log("Array abecedario", abecedario[letra]);
@@ -191,7 +190,7 @@
                     // Si está vacía, le asigno la imagen de la tecla pulsada
                     celda.src = elemento.src;
                     contLetras++;  //Incremento el contador de letras introducidas  
-                    console.log("Contador letras fila: ", contLetras);   
+                    console.log("Contador letras fila: ", contLetras);  //DEPURACIÓN 
 
                     celdaIdArray.push(celda.id); //Meto el ID en el array de celdas
                     //Reinicio del tiempo de línea al escribir la primera letra
@@ -234,13 +233,11 @@
         // Pintamos las verdes con los aciertos
         for (let i = 0; i < palabraSecreta.length; i++) {
             
-            // Mostramos por consola qué letras se comparan
+            // DEPURACIÓN
             console.log(`Comparando: '${palabraSecreta[i]}' con '${palabraGenerada[i]}'`);
 
             // Buscamos el código numérico de la letra en el array abecedario
             let codigo = abecedario.indexOf(palabraGenerada[i]);
-
-            if (codigo === -1) codigo = 0;
 
             if(palabraSecreta[i] === palabraGenerada[i]){
                 contAciertos++;
@@ -252,12 +249,11 @@
         //Pintamos las naranjas o rojas(sin tocar los verdes)
         for(let i = 0; i<palabraSecreta.length;i++){
                 
-            // Mostramos por consola qué letras se comparan
+            // DEPURACIÓN
             console.log(`Comparando: '${palabraSecreta[i]}' con '${palabraGenerada[i]}'`);
 
             // Buscamos el código numérico de la letra en el array abecedario
             let codigo = abecedario.indexOf(palabraGenerada[i]);
-            if (codigo === -1) codigo = 0;
 
             // Si ya está en verde, saltamos
             let img = document.getElementById(celdaIdArray[i]);
@@ -276,15 +272,14 @@
 
         // Si todas las letras son iguales, has ganado
         if (contAciertos === palabraSecreta.length) {
-            alert("Has acertado la palabra secreta. ¡ENHORABUENA!");
             finPartida();
             window.location.href= "acertado.html"
         } else {
-            console.log("NO son iguales");
             contNoSonIguales ++;
         }
         if (contNoSonIguales === 5){
-            alert("No has acertado la palabra Secreta!!!", palabraSecreta);
+            finPartida();
+            window.location.href = "noAcertado.html";
         }
 
         // Limpiamos el array de celdas para la siguiente palabra
