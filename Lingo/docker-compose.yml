@@ -13,7 +13,7 @@ services:
       - ./src:/var/www/html
     # Expone el puerto 81 del contenedor al puerto 80 del host
     ports:
-      - "81:80"
+      - "80:80"
     depends_on:
       - db
     # Conecta a la red interna
@@ -48,7 +48,7 @@ services:
     restart: unless-stopped
     # Mapea el puerto 8080 del host al 80 del phpMyAdmin
     ports:
-      - "8081:80"
+      - "8080:80"
     environment:
       # El host es el nombre del servicio Docker de la base de datos
       PMA_HOST: db
