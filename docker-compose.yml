@@ -14,6 +14,7 @@ services:
     # Expone el puerto 81 del contenedor al puerto 80 del host
     ports:
       - "80:80"
+
     depends_on:
       - db
     # Conecta a la red interna
@@ -59,8 +60,27 @@ services:
     networks:
       - lingo_network
 
+  # -------------------------------------------------------------------------
+  # 4. SERVICIO VITE PARA EL CORRECTO FUNCIONAMIENTO DE HTML Y CSS EN LARAVEL
+  # -------------------------------------------------------------------------
+  vite:
+    build:
+      context: ./docker/php
+    container_name: lingo-vite
+    working_dir: /var/www/html
+    command: npm run dev
+    volumes:
+      - ./src:/var/www/html
+    ports:
+      - "5173:5173"
+    networks:
+      - lingo_network
+    depends_on:
+      - web
+
+
 # ----------------------------------------------------
-# 4. REDES Y VOLÚMENES
+# 5. REDES Y VOLÚMENES
 # ----------------------------------------------------
 networks:
   # Red interna para que los contenedores se comuniquen entre sí por nombre
