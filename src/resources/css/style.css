@@ -27,8 +27,12 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center; /* centra verticalmente el logo y el texto */
+    justify-content: space-around;
     font-family: 'Iris', sans-serif;
     background-color: #b3914d;
+}
+header .usuario{
+  margin: 20px;
 }
 
 /* Hacemos que el logo ocupe solo su tamaño natural */
@@ -228,7 +232,6 @@ footer p{
 @media (min-width: 768px) {
   header {
     flex-direction: row;
-    justify-content: center;
   }
   header img {
     width: 150px;

@@ -5,7 +5,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('lingo.welcome');
 });
 
 //Ruta que devuelve todas las palabras de la tabla 'palabras'
@@ -18,14 +18,14 @@ Route::get('/palabrasStyled', [PalabraController::class, 'indexStyled'])->name('
 //Route::get('/palabrasBlade', [PalabraController::class, 'indexBlade'])->name('palabras.index');
 
 //Ruta que devuelve de la tabla 'palabras' una palabra aleatoria
-//Route::get('/palabrasRandom/', [PalabraController::class, indexRandom'])->name('palabras.indexRandomw');
+//Route::get('/palabrasRandom/', [PalabraController::class, indexRandom'])->name('palabras.indexRandom');
 
 //Ruta que devuelve de la tabla 'palabras' la cantidad de palabras aleatorias solicitada por URL y sino, devuelve 5 palabras
 Route::get('/palabrasRandom/{cantidad?}', [PalabraController::class, 'indexRandom'])->name('palabras.indexRandom');
 
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('lingo.lingo');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

@@ -1,11 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Juego</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.cdnfonts.com/css/iris" rel="stylesheet">
+    @vite(['resources/css/style.css', 'resources/js/script.js'])
+    <link href="https://fonts.cdnfonts.com/css/iris" rel="css/stylesheet">
 </head>
 
 <body>
@@ -16,6 +17,22 @@
         <div class="texto">
             <h1>PARANOIC GAMES - MIND BLOWING GAMES</h1>
         </div>
+         @auth
+            <div class="usuario">
+                <span>Hola, {{ Auth::user()->name }}</span>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit">Cerrar sesión</button>
+                </form>
+            </div>
+        @endauth
+
+        @guest
+            <div class="usuario">
+                <a href="{{ route('login') }}">Iniciar sesión</a>
+                <a href="{{ route('register') }}">Registrarse</a>
+            </div>
+        @endguest
     </header>
     <nav>
         <div class="btn jugar">JUGAR</div>
@@ -64,11 +81,7 @@
         <div class="imagen">
             <img src="imagenes/Logo/logo5.png" alt="">
         </div>
-
     </footer>
-
-    <!-- link al js el defer dejará que se cargue primero el html antes de empzar con el js-->
-    <script src="script.js" defer></script>
 
 </body>
 </html>
