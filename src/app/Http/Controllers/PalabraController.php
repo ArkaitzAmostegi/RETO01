@@ -23,12 +23,15 @@ class PalabraController extends Controller
         $palabras = Palabra::all(); //<-----Usa Eloquent
         return view('palabras.indexStyled', ['palabras' => $palabras]);
     }
-    public function indexBlade()
+    //Función para traer una cantidad de palabras, en este caso 2
+    public function indexRandom($cantidad = 1)
     {
-        //
-        $palabras = Palabra::all(); //<-----Usa Eloquent
-        return view('palabras.indexBlade', ['palabras' => $palabras]);
+    $palabras = Palabra::inRandomOrder()->take($cantidad)->get();
+        
+    return view('palabras.index', ['palabras' => $palabras ]);
     }
+
+
     /**
      * Show the form for creating a new resource.
      */

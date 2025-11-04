@@ -210,6 +210,10 @@
                         console.log(palabraGenerada)
                         //delete letras; NO hace falta eliminar el array letras, creando nuevo es suficiente
                         letras = [];   //Creo uno nuevo array
+
+                        /*Por Sonia
+                        Haría falta llamar a la ruta http://localhost/verificarPalabra/palabraGenerada y devolver un json
+                        */
                         compara(palabraSecreta, palabraGenerada); //Llamo a la función que compara las dos palabras
                     }else{
                         //Si aún no se han completado 5 letras
