@@ -35,6 +35,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    //Ruta para guardar la partida, está en el auth, para aprovechar la autenticación del usuario
+    Route::post('/guardarPartida', [PartidaController::class, 'store'])->middleware('auth')->name('partida.store');
 });
 
 require __DIR__.'/auth.php';

@@ -297,3 +297,36 @@
         // Limpiamos el array de celdas para la siguiente palabra
         celdaIdArray = [];
     }
+
+    //Endpoint para comprobar la palabraGenerada
+// Mientras vais aprendiendo a definir rutas (endpoints), os paso el que nos va a servir para comprobar si una palabra está en el diccionario (dejo el servidor node en ejecución para poder utilizarlo desde casa o clase):
+
+// EJ1:
+// Llamada: 
+// http://185.60.43.155:3000/api/check/carta
+// Respuesta:
+// {
+//   "word": "carta",
+//   "exists": true
+// }
+
+// EJ2:
+// Llamada: 
+// http://185.60.43.155:3000/api/check/asdes
+// Respuesta:
+// {
+//   "word": "asdes",
+//   "exists": false
+// }
+
+// Se chequea con las 10400 palabras que tenemos en el diccionario. Si no tiene 5 letras devuelve falso (se trataría de un error)
+
+// Esto se añade al endpoint que ya usáis de generación de palabras aleatorios para el juego:
+
+// http://185.60.43.155:3000/api/word/1
+
+// (1--> ES, 2---> EU, 3 --> EN)
+
+// Ondo segi !
+
+// Enrique

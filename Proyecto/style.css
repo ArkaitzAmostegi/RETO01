@@ -52,6 +52,37 @@ header .texto {
     text-align: center;
     font-size: clamp(1.5rem, 7vw, 2rem);
 }
+/* Usuario autenticado dentro del header */
+header .usuario {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* alinea el texto y el botón a la derecha */
+  margin-right: 30px;
+  color: #85e0e0; 
+  font-family: 'Iris', sans-serif;
+}
+
+header .usuario h3 {
+  margin: 0;
+  color: #85e0e0; 
+  font-weight: normal;
+  margin-bottom: 10px;
+}
+
+header .usuario button {
+  background-color: #33cccc;
+  color: #19334d;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+header .usuario button:hover {
+  background-color: #5cd6d6;
+}
 
 /*  NAV  */
 nav{

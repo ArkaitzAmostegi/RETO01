@@ -19,7 +19,7 @@
         </div>
         @auth
             <div class="usuario">
-                <span>Hola, {{ Auth::user()->name }}</span>
+                <h3>Hola, {{ Auth::user()->name }}</h3>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <button type="submit">Cerrar sesión</button>

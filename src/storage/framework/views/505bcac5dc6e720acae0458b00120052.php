@@ -19,7 +19,7 @@
         </div>
         <?php if(auth()->guard()->check()): ?>
             <div class="usuario">
-                <span>Hola, <?php echo e(Auth::user()->name); ?></span>
+                <h3>Hola, <?php echo e(Auth::user()->name); ?></h3>
                 <form method="POST" action="<?php echo e(route('logout')); ?>">
                     <?php echo csrf_field(); ?>
                     <button type="submit">Cerrar sesión</button>
