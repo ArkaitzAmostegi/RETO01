@@ -286,7 +286,11 @@
         if (contAciertos === palabraSecreta.length) {
             finPartida();
 
-            enviarPartida({ acertada: true, tiempo: tiempoPartida })
+             // Calculamos el tiempo empleado
+            const tiempoInicial = 180;
+            const tiempoUsado = tiempoInicial - tiempoPartida;
+
+            enviarPartida({ acertada: true, tiempo: tiempoUsado })
                 .catch(err => console.error(err))
                 .finally(() => {
                     window.location.href = "/acertado";
