@@ -284,11 +284,11 @@
 
         // Si todas las letras son iguales, has ganado
         if (contAciertos === palabraSecreta.length) {
-            finPartida();
-
              // Calculamos el tiempo empleado
             const tiempoInicial = 180;
             const tiempoUsado = tiempoInicial - tiempoPartida;
+            
+            finPartida();
 
             enviarPartida({ acertada: true, tiempo: tiempoUsado })
                 .catch(err => console.error(err))
