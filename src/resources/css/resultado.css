@@ -13,13 +13,19 @@ body {
     background-position: center;
 }
 
-.victoria {
+body.victoria   { 
     background: linear-gradient(135deg, #22c55e, #16a34a);
 }
-
-.derrota {
-    background: radial-gradient(circle at center, #7f1d1d, #450a0a);
+body.derrota    {
+    background: radial-gradient(circle at center, #7f1d1d, #450a0a); 
 }
+body.estadisticas {
+    background: linear-gradient(135deg, #1e3a8a, #3b82f6); 
+    }
+body.ranking    {
+    background: linear-gradient(135deg, #010718, #263a5b); 
+    }
+
 
 .contenedor {
     background-color: rgba(0, 0, 0, 0.5);

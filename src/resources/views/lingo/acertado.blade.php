@@ -11,8 +11,8 @@
         <img src="imagenes/victory.jpg" alt="Victoria" class="imagen-resultado">
         <h1>¡Felicidades!</h1>
         <p>Has acertado la palabra secreta 🎯</p>
-        <h3 id="tiempo">Tiempo realizado</h3>
-        <a href="lingo.html" class="btnJugar">Jugar otra vez</a>
+        <h3 id="tiempoRealizado">Tiempo realizado</h3>
+        <a href="{{ route('lingo') }}" class="btnJugar">Jugar otra vez</a>
     </div>
 </body>
 </html>

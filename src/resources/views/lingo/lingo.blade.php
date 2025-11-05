@@ -38,7 +38,8 @@
     </header>
     <nav>
         <div class="btn jugar">JUGAR</div>
-        <div class="btn estadisticas">ESTADÍSTICAS</div>
+        <a href="{{ route('estadisticas') }}" class="btn estadisticas">ESTADÍSTICAS</a>
+        <a href="{{ route('ranking') }}" class="btn ranking">RANKING</a>
         <div class="btn idioma">IDIOMA</div>
     </nav>
     <section>
