@@ -38,7 +38,8 @@
     </header>
     <nav>
         <div class="btn jugar">JUGAR</div>
-        <div class="btn estadisticas">ESTADÍSTICAS</div>
+        <a href="<?php echo e(route('estadisticas')); ?>" class="btn estadisticas">ESTADÍSTICAS</a>
+        <a href="<?php echo e(route('ranking')); ?>" class="btn ranking">RANKING</a>
         <div class="btn idioma">IDIOMA</div>
     </nav>
     <section>
