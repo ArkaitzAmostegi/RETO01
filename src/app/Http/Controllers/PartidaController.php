@@ -65,7 +65,7 @@ class PartidaController extends Controller
        $mejorTiempo = DB::table('partidas')
         ->where('nombre', $nombre)
         ->where('acertada', 1)
-        ->where('tiempo', '>', 0) // ⬅️ ignoramos tiempos 0
+        ->where('tiempo', '>', 0) // ignoramos tiempos 0
         ->min('tiempo') ?? 0;
 
 
@@ -96,7 +96,7 @@ class PartidaController extends Controller
             $total = $partidas->count();
             $ganadas = $partidas->where('acertada', 1)->count();
 
-            // ✅ Mejor tiempo real (sin ceros)
+            // Mejor tiempo real (sin ceros)
             $mejorTiempo = DB::table('partidas')
                 ->where('nombre', $nombre)
                 ->where('acertada', 1)

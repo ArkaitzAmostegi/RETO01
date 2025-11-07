@@ -22,8 +22,12 @@ Route::get('/', function () {
 //Ruta que devuelve de la tabla 'palabras' una palabra aleatoria
 //Route::get('/palabrasRandom/', [PalabraController::class, indexRandom'])->name('palabras.indexRandom');
 
+
 //Ruta que devuelve de la tabla 'palabras' la cantidad de palabras aleatorias solicitada por URL y sino, devuelve 5 palabras
 Route::get('/palabrasRandom/{cantidad?}', [PalabraController::class, 'indexRandom'])->name('palabras.indexRandom');
+//Ruta que devuelve palabra aleatoria
+Route::get('/palabra/random', [PalabraController::class, 'random']);
+
 
 //Rutas que nos llevas a las diferentes páginas del juego: lingo, acertado y no acertado, estadisticas y ranking
 Route::view('/acertado', 'lingo.acertado')->middleware(['auth', 'verified'])->name('acertado');

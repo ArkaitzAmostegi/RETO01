@@ -32,6 +32,21 @@ class PalabraController extends Controller
     return view('palabras.index', ['palabras' => $palabras ]);
     }
 
+    // Devuelve una palabra aleatoria como JSON
+    public function random(): \Illuminate\Http\JsonResponse
+    {
+        $palabra = Palabra::inRandomOrder()->first();
+
+        if (!$palabra) {
+            return response()->json(['error' => 'No hay palabras en la base de datos'], 404);
+        }
+
+        return response()->json([
+            'word' => $palabra->palabra
+        ]);
+    }
+
+
 
     /**
      * Show the form for creating a new resource.

@@ -1,8 +1,13 @@
 
-    //Endpoint para la palabra secreta
+    
     'use strict';
 
+    //Endpoint para la palabra secreta
+    //Enpoint CLIENTE
     const ENDPOINT = "http://185.60.43.155:3000/api/word/1";
+    //Endpoint SEVIDOR
+    //const ENDPOINT = "http://localhost:8000/palabra/random";
+
     let palabraSecreta = "";
 
     // 1) Función asíncrona: usa await con fetch y con resp.json() (Sin control de errores)
@@ -40,9 +45,9 @@
         const imgDec = document.getElementById("partida-decenas");
         const imgUni = document.getElementById("partida-unidades");
 
-        imgCen.src = `imagenes/Numeros/${centenas}.png`;
-        imgDec.src = `imagenes/Numeros/${decenas}.png`;
-        imgUni.src = `imagenes/Numeros/${unidades}.png`;
+        imgCen.src = `/imagenes/Numeros/${centenas}.png`;
+        imgDec.src = `/imagenes/Numeros/${decenas}.png`;
+        imgUni.src = `/imagenes/Numeros/${unidades}.png`;
     }
     //Función TEMPORIZADOR REGRESIVO LINEA
     function actualizarTiempoLinea() {
@@ -52,8 +57,8 @@
         const imgDec = document.getElementById("linea-decenas");
         const imgUni = document.getElementById("linea-unidades");
 
-        imgDec.src = `imagenes/Numeros/${decenas}.png`;
-        imgUni.src = `imagenes/Numeros/${unidades}.png`;
+        imgDec.src = `/imagenes/Numeros/${decenas}.png`;
+        imgUni.src = `/imagenes/Numeros/${unidades}.png`;
     }
     let intervaloPartida = null;
     let intervaloLinea = null;
@@ -137,7 +142,7 @@
         for (let j = 0; j < N; j++) {
             sHTML += `
             <div class="celda1 ${j}">
-                <img id="${i}${j}" src="imagenes/verdes/29.png">
+                <img id="${i}${j}" src="/imagenes/verdes/29.png">
             </div>
             `;
         }
@@ -161,7 +166,7 @@
             } else {
                 tecl += `
                 <div class="celda2">
-                    <img id="${l}${n}" src="imagenes/azules/${l}${n}.png" onclick="presionaTecla(this)">
+                    <img id="${l}${n}" src="/imagenes/azules/${l}${n}.png" onclick="presionaTecla(this)">
                 </div>
                 `;
             }
@@ -242,7 +247,7 @@
                         let letra = letras[i];
                         let codigo = abecedario.indexOf(letra);
                         let codigoFormateado = codigo.toString().padStart(2, '0');
-                        document.getElementById(celdaIdArray[i]).src = `imagenes/rojas/${codigoFormateado}.png`;
+                        document.getElementById(celdaIdArray[i]).src = `/imagenes/rojas/${codigoFormateado}.png`;
                         }
 
                         // Limpiar arrays y contadores
@@ -291,7 +296,7 @@
             if(palabraSecreta[i] === palabraGenerada[i]){
                 contAciertos++;
                 let codigoFormateado = codigo.toString().padStart(2, '0');
-                document.getElementById(celdaIdArray[i]).src = `imagenes/verdes/${codigoFormateado}.png`;
+                document.getElementById(celdaIdArray[i]).src = `/imagenes/verdes/${codigoFormateado}.png`;
             }
         }
 
@@ -311,11 +316,11 @@
             if (palabraSecreta.includes(palabraGenerada[i])) {
                 // Letra está en la palabra, pero no en esa posición
                 let codigoFormateado = codigo.toString().padStart(2, '0');
-                img.src = `imagenes/naranjas/${codigoFormateado}.png`;
+                img.src = `/imagenes/naranjas/${codigoFormateado}.png`;
             } else {
                 // Letra no está en la palabra
                 let codigoFormateado = codigo.toString().padStart(2, '0');
-                img.src = `imagenes/rojas/${codigoFormateado}.png`;
+                img.src = `/imagenes/rojas/${codigoFormateado}.png`;
             }
         }
 

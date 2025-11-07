@@ -8,10 +8,13 @@ export default defineConfig({
             refresh: true,
         }),
     ],
-    server: { // <-- Añade esta sección bajo ‘plugins’
-        host: '0.0.0.0',
+    server: {
+        host: '0.0.0.0', // Escucha en todas las interfaces
+        port: 5173,      // Asegura el mismo puerto
+        cors: true,             // <--- permite CORS desde cualquier origen
         hmr: {
-            host: 'localhost',
+            host: '10.10.18.189', // Tu IP del host
+            protocol: 'http',
         },
     },
 });
