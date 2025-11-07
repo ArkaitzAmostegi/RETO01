@@ -30,12 +30,11 @@ Route::view('/acertado', 'lingo.acertado')->middleware(['auth', 'verified'])->na
 Route::view('/noAcertado', 'lingo.noAcertado')->middleware(['auth', 'verified'])->name('noAcertado');
 Route::get('/lingo', function(){return view('lingo.lingo');})->middleware(['auth', 'verified'])->name('lingo');
 //?? Podría ser en vez del anterior? Route::view('/lingo', 'lingo.lingo')->name('lingo');
-Route::view('/estadisticas', 'lingo.estadisticas')->middleware(['auth', 'verified'])->name('estadisticas');
-Route::view('/ranking', 'lingo.ranking')->middleware(['auth', 'verified'])->name('ranking');
 
 //Rutas para las estadisticas y ranking al controller de cada una
 Route::get('/estadisticas', [PartidaController::class, 'estadisticas'])->middleware(['auth', 'verified'])->name('estadisticas');
 Route::get('/ranking', [PartidaController::class, 'ranking'])->middleware(['auth', 'verified'])->name('ranking');
+
 
 
 

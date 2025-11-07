@@ -26,7 +26,7 @@ class PartidaController extends Controller
             Partida::create([
                 'nombre'   => Auth::user()->name,
                 'acertada' => $validated['acertada'],
-                'tiempo'   => !empty($validated['acertada']) ? ($validated['tiempo'] ?? 0) : 0,
+                'tiempo' => $validated['acertada'] ? ($validated['tiempo'] ?? 0) : null,
             ]);
 
             return response()->json(['ok' => true], 201);
@@ -39,10 +39,6 @@ class PartidaController extends Controller
      //Función para las estadísticas
     public function estadisticas()
     {
-        // Obtener el nombre del usuario autenticado
-        $nombre = Auth::user()->name ?? 'Invitado';
-
-        // Si el usuario no está autenticado, devolvemos valores vacíos
         if (!Auth::check()) {
             return view('lingo.estadisticas', [
                 'nombre' => 'Invitado',
@@ -51,26 +47,36 @@ class PartidaController extends Controller
             ]);
         }
 
-        // Consultar todas las partidas del usuario autenticado
-        $partidas = DB::table('partidas')->where('nombre', $nombre)->get();
+        $nombre = Auth::user()->name;
 
-        if ($partidas->isEmpty()) {
-            $porcentajeVictorias = 0;
-            $mejorTiempo = 0;
-        } else {
-            $total = $partidas->count();
-            $ganadas = $partidas->where('acertada', 1)->count();
-            $porcentajeVictorias = round(($ganadas / $total) * 100, 2);
+        //Calcular todo directamente desde SQL (evita problemas con tipos)
+        $total = DB::table('partidas')
+            ->where('nombre', $nombre)
+            ->count();
 
-            // Obtener el menor tiempo de las partidas ganadas
-            $mejorTiempo = $partidas
-                ->where('acertada', 1)
-                ->min('tiempo') ?? 0;
-        }
+        $ganadas = DB::table('partidas')
+            ->where('nombre', $nombre)
+            ->where('acertada', 1)
+            ->count();
 
-        // Pasar los datos a la vista
+        $porcentajeVictorias = $total > 0 ? round(($ganadas / $total) * 100, 2) : 0;
+
+        // Calcular el menor tiempo con SQL nativo
+       $mejorTiempo = DB::table('partidas')
+        ->where('nombre', $nombre)
+        ->where('acertada', 1)
+        ->where('tiempo', '>', 0) // ⬅️ ignoramos tiempos 0
+        ->min('tiempo') ?? 0;
+
+
+        // Evitar null
+        $mejorTiempo = $mejorTiempo ?? 0;
+
+        Log::info("ESTADISTICAS -> usuario: $nombre, ganadas: $ganadas, total: $total, mejorTiempo: $mejorTiempo");
+
         return view('lingo.estadisticas', compact('nombre', 'porcentajeVictorias', 'mejorTiempo'));
     }
+
 
     //Función para el Ranking
     public function ranking()
@@ -84,21 +90,24 @@ class PartidaController extends Controller
         $ranking = [];
 
         foreach ($jugadores as $nombre) {
+            // Todas las partidas de ese jugador
             $partidas = DB::table('partidas')->where('nombre', $nombre)->get();
 
             $total = $partidas->count();
             $ganadas = $partidas->where('acertada', 1)->count();
 
-            // Tiempo más rápido entre las partidas ganadas (récord)
-            $mejorTiempo = $ganadas > 0
-                ? $partidas->where('acertada', 1)->min('tiempo')
-                : null;
+            // ✅ Mejor tiempo real (sin ceros)
+            $mejorTiempo = DB::table('partidas')
+                ->where('nombre', $nombre)
+                ->where('acertada', 1)
+                ->where('tiempo', '>', 0) // ignoramos tiempos nulos o falsos
+                ->min('tiempo');
 
             $ranking[] = [
                 'nombre' => $nombre,
                 'jugadas' => $total,
                 'ganadas' => $ganadas,
-                'mejor_tiempo' => $mejorTiempo,
+                'mejor_tiempo' => $mejorTiempo ?? null,
             ];
         }
 
@@ -113,3 +122,4 @@ class PartidaController extends Controller
         return view('lingo.ranking', compact('ranking'));
     }
 }
+
