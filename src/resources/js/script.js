@@ -321,10 +321,11 @@
 
         // Si todas las letras son iguales, has ganado
         if (contAciertos === palabraSecreta.length) {
-             // Calculamos el tiempo empleado
+            // Calculamos el tiempo empleado ANTES de reiniciar
             const tiempoInicial = 180;
             const tiempoUsado = tiempoInicial - tiempoPartida;
-            
+
+            // Ahora sí, detenemos los temporizadores
             finPartida();
 
             enviarPartida({ acertada: true, tiempo: tiempoUsado })
@@ -332,7 +333,6 @@
                 .finally(() => {
                     window.location.href = "/acertado";
                 });
-
         } else {
             contNoSonIguales++;
         }
