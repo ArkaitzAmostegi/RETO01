@@ -13,7 +13,7 @@ services:
       - ./src:/var/www/html
     # Expone el puerto 81 del contenedor al puerto 80 del host
     ports:
-      - "80:80"
+      - "6013:80"
 
     depends_on:
       - db
