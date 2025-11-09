@@ -19,7 +19,7 @@
         <div class="min-h-screen flex flex-col justify-center items-center bg-gradient-to-b from-blue-400 to-blue-800">
             <div class="decoration flex flex-col items-center justify-center space-y-2">
                 <div class="logo">
-                    <img src="<?php echo e(asset('imagenes/Logo/logo5.png')); ?>" alt="logo" class="mx-auto w-48 h-auto">
+                    <img src="<?php echo e(asset('imagenes/Logo/logo2.png')); ?>" alt="logo" class="mx-auto w-48 h-auto">
                 </div>
                 <div class="titulo-paranoic flex justify-center space-x-1">
                     <a href="/" class="flex">
