@@ -9,7 +9,7 @@ export default defineConfig({
         }),
     ],
 
-    //Este server funcionaba desde CLASE con el host 10.10.18.189
+//     //Este server es para la conexión de los profesores en CLASE con el host 10.10.18.189
 //     server: {
 //         host: '0.0.0.0', // Escucha en todas las interfaces
 //         port: 5173,      // Asegura el mismo puerto
@@ -22,6 +22,7 @@ export default defineConfig({
 // });
 
 //Este server he tenido que poner en CASA por el host y el hmr que no los localizaba
+//Al poner en el host localhost, va a buscar el vite, el css a ese ordenador, si pongo una ip como arriba es para cuendo el ordenador de esa ip este encendido, vaay a buscar el css a ese ordendor
 
     server: {
         host: '0.0.0.0',
